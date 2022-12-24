@@ -1,0 +1,19 @@
+{
+  "name": "frontend-project-11",
+  "version": "1.0.0",
+  "description": "'Web application for automatic collection of messages from sources exporting to RSS formats'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlekseySapunkov/frontend-project-11.git"
+  },
+  "author": "Aleksey Sapunkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlekseySapunkov/frontend-project-11/issues"
+  },
+  "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme"
+}
