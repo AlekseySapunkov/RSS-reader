@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AlekseySapunkov/frontend-project-11/issues"
   },
-  "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme"
+  "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme",
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  }
 }
