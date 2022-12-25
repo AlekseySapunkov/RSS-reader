@@ -1,18 +1,25 @@
 install:
 	npm ci
-	chmod +x bin/*.js
 
 publish:
 	npm publish --dry-run
 
 make lint:
 	npx eslint .
-
+make lint-fix:
+	npx eslint . --fix
+webpack:
+	npx webpack
+webpack-watch:
+	npx webpack	--watch
+webpack-server:	
+	npx webpack-dev-server --open
 link:
 	npm link
 	
-run:
-	bin/newsAggregator.js
+build:
+	# rm -rf dist
+	NODE_ENV=production npx webpack
 
 test:
 	npm test
