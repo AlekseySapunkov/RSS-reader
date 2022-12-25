@@ -1,10 +1,10 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "type": "module",
   "description": "'Web application for automatic collection of messages from sources exporting to RSS formats'",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
