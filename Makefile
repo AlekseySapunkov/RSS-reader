@@ -18,9 +18,10 @@ link:
 	npm link
 	
 build:
-	# rm -rf dist
-	NODE_ENV=production npx webpack
-
+	rm -rf dist
+	NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider npx webpack
+develop:
+	npx webpack serve
 test:
 	npm test
 
