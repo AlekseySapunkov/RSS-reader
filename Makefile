@@ -14,8 +14,6 @@ webpack-watch:
 	npx webpack	--watch
 webpack-server:	
 	npx webpack-dev-server --open
-link:
-	npm link
 	
 build:
 	rm -rf dist
