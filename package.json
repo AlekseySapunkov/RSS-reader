@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme",
   "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
     "autoprefixer": "^10.4.13",
     "css-loader": "^6.7.3",
     "eslint": "^8.30.0",
