@@ -1,0 +1,15 @@
+  name: linter
+
+  on: [push]
+
+  jobs:
+    build:
+
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v3
+      - name: install dependances
+        run: make install
+      - name: use eslint
+        run: make lint
