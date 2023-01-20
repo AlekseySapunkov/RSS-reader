@@ -4,3 +4,10 @@
 [![Node CI](https://github.com/AlekseySapunkov/frontend-project-lvl2/actions/workflows/makefile.yml/badge.svg)](https://github.com/AlekseySapunkov/frontend-project-lvl11/actions/workflows/makefile.yml)
 
 ## <a href="https://frontend-project-11-iota.vercel.app">Демо версия приложения</a>
+**Make install**
+
+Установка зависимостей
+
+**Make develop**
+
+Запуск
