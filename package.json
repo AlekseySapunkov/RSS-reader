@@ -1,20 +1,20 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Kemononya/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/Kemononya/frontend-project-11/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/7431ee6bda3151b2191d/maintainability)](https://codeclimate.com/github/Kemononya/frontend-project-11/maintainability) [![Actions Status](https://github.com/Kemononya/frontend-project-11/workflows/eslint-test/badge.svg)](https://github.com/Kemononya/frontend-project-11/actions)",
+  "description": "Web application for reading website content",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kemononya/frontend-project-11.git"
+    "url": "https://github.com/AlekseySapunkov/frontend-project-11.git"
   },
-  "author": "Чайковский Прохор",
+  "author": "Сапунков Алексей",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kemononya/frontend-project-11/issues"
+    "url": "https://github.com/AlekseySapunkov/frontend-project-11/issues"
   },
-  "homepage": "https://github.com/Kemononya/frontend-project-11#readme",
+  "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
