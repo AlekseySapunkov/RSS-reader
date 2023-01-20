@@ -12,7 +12,7 @@
   "author": "Сапунков Алексей",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlekseySapunkov/frontend-project-11/issues"
+    "url": "git+https://github.com/AlekseySapunkov/frontend-project-11/issues"
   },
   "homepage": "https://github.com/AlekseySapunkov/frontend-project-11#readme",
   "devDependencies": {
