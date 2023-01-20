@@ -1,6 +1,6 @@
 ### Hexlet tests and linter status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/7c8efeed5c3d7597ac5b/maintainability)](https://codeclimate.com/github/AlekseySapunkov/frontend-project-11/maintainability)
-[![Node CI](https://github.com/AlekseySapunkov/frontend-project-lvl2/actions/workflows/makefile.yml/badge.svg)](https://github.com/AlekseySapunkov/frontend-project-lvl11/actions/workflows/makefile.yml)
+[![Actions Status](https://github.com/AlekseySapunkov/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/AlekseySapunkov/frontend-project-11/actions)
 
 ## <a href="https://frontend-project-11-iota.vercel.app">Демо версия приложения</a>
 **Make install**
