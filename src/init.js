@@ -31,7 +31,7 @@ export default () => {
     viewedPost: '',
   };
   const form = document.querySelector('form.rss-form');
-  const watchedState = onChange(state, render(state, form, i18nInstance));
+  const watch = onChange(state, render(state, form, i18nInstance));
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -57,16 +57,16 @@ export default () => {
       })
       .then((response) => {
         const id = uniqueId();
-        parser(watchedState, response.data, 'new', id);
+        parser(watch, response.data, 'new', id);
         return id;
       })
       .then((id) => {
-        watchedState.newFeedId = id;
+        watch.newFeedId = id;
         state.addedUrls.push(url);
-        tracking(watchedState, url, i18nInstance, id);
+        tracking(watch, url, i18nInstance, id);
       })
       .catch((err) => {
-        watchedState.error = err;
+        watch.error = err;
       });
   });
 };
