@@ -5,8 +5,7 @@ import axios from 'axios';
 import uniqueId from 'lodash/uniqueId';
 import ru from './locales/ru.js';
 import render from './render.js';
-import parser from './parser.js';
-import tracking from './tracking.js';
+import { parser, tracking } from './parser.js';
 
 export default () => {
   const i18nInstance = i18n.createInstance();

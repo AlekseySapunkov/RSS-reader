@@ -1,9 +1,10 @@
 import uniqueId from 'lodash/uniqueId';
+import axios from 'axios';
 
-export default (state, data, type, curFeedId) => {
+const parser = (state, data, type, curFeedId) => {
   try {
-    const parser = new DOMParser();
-    const document = parser.parseFromString(data.contents, 'text/xml');
+    const domParser = new DOMParser();
+    const document = domParser.parseFromString(data.contents, 'text/xml');
     const items = document.querySelectorAll('item');
     if (type === 'new') {
       const chaTitle = document.querySelector('channel > title').textContent;
@@ -47,3 +48,16 @@ export default (state, data, type, curFeedId) => {
     throw new Error();
   }
 };
+
+const tracking = (state, url, i18n, feedId) => {
+  const modifiedUrl = `${i18n.t('proxy')}${encodeURIComponent(url)}`;
+  const iter = () => {
+    axios.get(modifiedUrl)
+      .then((response) => parser(state, response.data, 'existing', feedId))
+      .catch((err) => console.error(err))
+      .then(() => setTimeout(() => iter(), 5000));
+  };
+  setTimeout(() => iter(), 5000);
+};
+
+export { parser, tracking };
