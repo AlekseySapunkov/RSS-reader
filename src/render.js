@@ -8,7 +8,7 @@ const createList = (type, i18n) => {
   div.classList.add('card', 'border-0');
   container.append(div);
   const cardBody = `<div class="card-body"><h2 class="card-title h4">${i18n.t(type)}</h2></div>`;
-  div.innerHTML = cardBody;
+  div.innerHTML = cardBody.textContent;
 
   const list = document.createElement('ul');
   list.classList.add('list-group', 'border-0', 'rounded-0');
