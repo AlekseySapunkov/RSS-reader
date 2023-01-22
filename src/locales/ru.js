@@ -1,4 +1,5 @@
-const url = new URL('https://allorigins.hexlet.app/get?disableCache=true&url=')
+const url = new URL('https://allorigins.hexlet.app/get?disableCache=true&url=');
+
 export default {
   translation: {
     proxy: `${url}`,
