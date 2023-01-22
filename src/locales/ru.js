@@ -1,6 +1,7 @@
+const url = new URL('https://allorigins.hexlet.app/get?disableCache=true&url=')
 export default {
   translation: {
-    proxy: 'https://allorigins.hexlet.app/get?disableCache=true&url=',
+    proxy: `${url}`,
     feeds: 'Фиды',
     posts: 'Посты',
     button: 'Просмотр',
