@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import i18n from 'i18next';
 import axios from 'axios';
 import uniqueId from 'lodash/uniqueId';
-import ru from './locales/ru.js';
+import languages from './locales/index.js';
 import render from './render.js';
 import { parser, tracking } from './parser.js';
 
@@ -11,9 +11,7 @@ export default () => {
   const i18nInstance = i18n.createInstance();
   i18nInstance.init({
     lng: 'ru',
-    resources: {
-      ru,
-    },
+    resources: languages,
   });
 
   const state = {
@@ -28,6 +26,9 @@ export default () => {
     addedUrls: [],
     trackingPosts: [],
     viewedPost: '',
+    feedsAddingProcessState: {
+      state: 'ready to download',
+    },
   };
   const form = document.querySelector('form.rss-form');
   const watch = onChange(state, render(state, form, i18nInstance));
