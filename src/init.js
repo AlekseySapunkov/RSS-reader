@@ -37,8 +37,13 @@ export default () => {
     addedUrls: [],
     trackingPosts: [],
     viewedPost: '',
-    feedsAddingProcessState: {
-      state: 'ready to download',
+    form: {
+      state: 'valid',
+      error: null,
+    },
+    loading: {
+      state: 'valid',
+      error: null,
     },
   };
   const form = document.querySelector('form.rss-form');
