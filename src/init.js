@@ -5,7 +5,7 @@ import axios from 'axios';
 import uniqueId from 'lodash/uniqueId';
 import languages from './locales/index.js';
 import render from './render.js';
-import { parser, tracking } from './parser.js';
+import parser from './parser.js';
 
 export default () => {
   const i18nInstance = i18n.createInstance();
@@ -13,6 +13,17 @@ export default () => {
     lng: 'ru',
     resources: languages,
   });
+
+  const tracking = (state, url, instance, feedId) => {
+    const modifiedUrl = `${instance.t('proxy')}${encodeURIComponent(url)}`;
+    const iter = () => {
+      axios.get(modifiedUrl)
+        .then((response) => parser(state, response.data, 'existing', feedId))
+        .catch((err) => console.error(err))
+        .then(() => setTimeout(() => iter(), 5000));
+    };
+    setTimeout(() => iter(), 5000);
+  };
 
   const state = {
     fields: {
