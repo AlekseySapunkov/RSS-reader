@@ -6,12 +6,10 @@ const createList = (type, i18n) => {
   container.innerHTML = '';
   const div = document.createElement('div');
   div.classList.add('card', 'border-0');
-  const feedTitle = document.createElement('h2');
-  feedTitle.textContent = i18n.t('Фиды');
   container.append(div);
-  const cardBody = `<div class="card-body"><h2 class="card-title h4">${i18n.t(type)}</h2></div>`;
+  const content = i18n.t(type);
+  const cardBody = `<div class="card-body"><h2 class="card-title h4">${content}</h2></div>`;
   div.innerHTML = cardBody.textContent;
-
   const list = document.createElement('ul');
   list.classList.add('list-group', 'border-0', 'rounded-0');
   div.append(list);
