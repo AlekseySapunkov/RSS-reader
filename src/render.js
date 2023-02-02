@@ -7,9 +7,10 @@ const createList = (type, i18n) => {
   const div = document.createElement('div');
   div.classList.add('card', 'border-0');
   container.append(div);
-  const content = i18n.t(type);
-  const cardBody = `<div class="card-body"><h2 class="card-title h4">${content}</h2></div>`;
-  div.innerHTML = cardBody.textContent;
+  const h2 = document.createElement('h2');
+  h2.classList.add('card-title', 'h4');
+  h2.textContent = i18n.t(type);
+  div.prepend(h2);
   const list = document.createElement('ul');
   list.classList.add('list-group', 'border-0', 'rounded-0');
   div.append(list);
