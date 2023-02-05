@@ -37,12 +37,12 @@ export default () => {
     addedUrls: [],
     trackingPosts: [],
     viewedPost: '',
-    form: {
+    formValidation: {
       state: 'valid',
       error: null,
     },
-    loading: {
-      state: 'valid',
+    dataLoading: {
+      state: 'waiting',
       error: null,
     },
   };
@@ -68,6 +68,7 @@ export default () => {
     });
     schema.validate(state.fields)
       .then(() => {
+        watch.formValidation.state = 'valid';
         const modifiedUrl = `${i18nInstance.t('proxy')}${encodeURIComponent(url)}`;
         return axios.get(modifiedUrl);
       })
@@ -80,8 +81,12 @@ export default () => {
         watch.newFeedId = id;
         state.addedUrls.push(url);
         tracking(watch, url, i18nInstance, id);
+        watch.dataLoading.state = 'successful';
+        watch.dataLoading.state = 'waiting';
       })
       .catch((err) => {
+        watch.formValidation.state = 'invalid';
+        watch.dataLoading.state = 'failed';
         watch.error = err;
       });
   });
