@@ -136,6 +136,7 @@ export default (state, form, i18n) => (path, value, prevValue) => {
         feedbackContainer.textContent = i18n.t('loading');
         break;
       case 'failed':
+        form.elements.url.classList.add('is-invalid');
         feedbackContainer.textContent = i18n.t('errors.invalidRss');
         break;
       case 'successful':
