@@ -128,4 +128,23 @@ export default (state, form, i18n) => (path, value, prevValue) => {
     const posts = state.trackingPosts.filter(({ id }) => !existingPosts.includes(id)).reverse();
     renderPosts(posts, list, 'prepend', i18n, state);
   }
+  if (path === 'dataLoading') {
+    const currentState = state.dataLoading.state;
+    const feedbackContainer = createFeedbackContainer();
+    switch (currentState) {
+      case 'processing':
+        feedbackContainer.textContent = i18n.t('loading');
+        break;
+      case 'failed':
+        feedbackContainer.textContent = i18n.t('errors.invalidRss');
+        break;
+      case 'successful':
+        feedbackContainer.textContent = i18n.t('success');
+        break;
+      case 'waiting':
+        break;
+      default:
+        throw new Error(`Unexpected state mode: ${currentState}`);
+    }
+  }
 };
