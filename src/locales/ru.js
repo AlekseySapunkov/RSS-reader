@@ -7,6 +7,7 @@ export default {
     posts: 'Посты',
     button: 'Просмотр',
     success: 'RSS успешно загружен',
+    loading: 'RSS загружается',
     errorNames: {
       validation: 'ValidationError',
       axios: 'AxiosError',
