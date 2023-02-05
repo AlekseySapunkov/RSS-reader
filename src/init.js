@@ -33,7 +33,6 @@ export default () => {
     posts: [],
     newFeedId: '',
     error: '',
-    parsingErrors: [],
     addedUrls: [],
     trackingPosts: [],
     viewedPost: '',
@@ -87,6 +86,7 @@ export default () => {
       .catch((err) => {
         watch.formValidation.state = 'invalid';
         watch.dataLoading.state = 'failed';
+        watch.dataLoading.error = err;
         watch.error = err;
       });
   });
