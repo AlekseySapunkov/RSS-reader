@@ -14,17 +14,6 @@ export default () => {
     resources: languages,
   });
 
-  const tracking = (state, url, instance, feedId) => {
-    const modifiedUrl = `${instance.t('proxy')}${encodeURIComponent(url)}`;
-    const iter = () => {
-      axios.get(modifiedUrl)
-        .then((response) => parser(state, response.data, 'existing', feedId))
-        .catch((err) => console.error(err))
-        .then(() => setTimeout(() => iter(), 5000));
-    };
-    setTimeout(() => iter(), 5000);
-  };
-
   const state = {
     fields: {
       url: '',
@@ -47,6 +36,17 @@ export default () => {
   };
   const form = document.querySelector('form.rss-form');
   const watch = onChange(state, render(state, form, i18nInstance));
+  const tracking = (states, url, instance, feedId) => {
+    const modifiedUrl = `${instance.t('proxy')}${encodeURIComponent(url)}`;
+    const iter = () => {
+      axios.get(modifiedUrl)
+        .then((response) => parser(states, response.data, 'existing', feedId))
+        .catch((err) => console.error(err))
+        .then(() => setTimeout(() => iter(), 5000));
+    };
+    setTimeout(() => iter(), 5000);
+  };
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
