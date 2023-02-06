@@ -80,11 +80,6 @@ export default (state, form, i18n) => (path, value, prevValue) => {
       feedbackContainer.textContent = i18n.t('errors.network');
     }
   }
-  if (path === 'parsingErrors') {
-    form.elements.url.classList.add('is-invalid');
-    const feedbackContainer = createFeedbackContainer();
-    feedbackContainer.textContent = i18n.t('errors.invalidRss');
-  }
   if (path === 'feeds') {
     const list = createList('feeds', i18n);
     state.feeds.forEach((feed) => {
