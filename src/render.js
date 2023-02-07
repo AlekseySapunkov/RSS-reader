@@ -50,7 +50,7 @@ const renderPosts = (state, postsArea, posts, i18n) => {
       'align-items-start',
       'post-card',
       'border-0',
-      'border-end-0'
+      'border-end-0',
     );
 
     const postLink = document.createElement('a');
