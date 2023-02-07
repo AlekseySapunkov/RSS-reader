@@ -1,22 +1,30 @@
-const url = new URL('https://allorigins.hexlet.app/get?disableCache=true&url=');
+import { setLocale } from 'yup';
+
+setLocale({
+  string: {
+    url: 'validError',
+    required: 'emptyError',
+    notOneOf: 'existsError',
+  },
+  mixed: {
+    notOneOf: 'existsError',
+  },
+});
 
 export default {
   translation: {
-    proxy: `${url}`,
     feeds: 'Фиды',
     posts: 'Посты',
-    button: 'Просмотр',
+    buttonTextShow: 'Просмотр',
     success: 'RSS успешно загружен',
     loading: 'RSS загружается',
-    errorNames: {
-      validation: 'ValidationError',
-      axios: 'AxiosError',
-    },
-    errors: {
-      invalidUrl: 'Ссылка должна быть валидным URL',
-      invalidRss: 'Ресурс не содержит валидный RSS',
-      addedRss: 'RSS уже существует',
-      network: 'Ошибка сети',
-    },
+    close: 'Закрыть',
+    openFull: 'Читать полную версию',
+    validation: 'ValidationError',
+    axios: 'AxiosError',
+    validError: 'Ссылка должна быть валидным URL',
+    invalidRSS: 'Ресурс не содержит валидный RSS',
+    existsError: 'RSS уже существует',
+    networkError: 'Ошибка сети',
   },
 };
