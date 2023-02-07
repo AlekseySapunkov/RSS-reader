@@ -1,50 +1,27 @@
-import uniqueId from 'lodash/uniqueId';
+const mapPosts = (posts) => posts
+  .map((item) => {
+    const title = item.querySelector('title').textContent;
+    const description = item.querySelector('description').textContent;
+    const link = item.querySelector('link').textContent.trim();
+    return { title, link, description };
+  });
 
-const parser = (state, data, type, curFeedId) => {
-  const domParser = new DOMParser();
-  const document = domParser.parseFromString(data.contents, 'text/xml');
-  const items = document.querySelectorAll('item');
-  const parseError = document.querySelector('parsererror');
-  if (parseError) {
-    throw new Error(parseError.textContent);
+const parser = (data) => {
+  const rssParser = new DOMParser();
+  const document = rssParser.parseFromString(data, 'application/xml');
+  const errorNode = document.querySelector('parsererror');
+  if (errorNode) {
+    throw new Error('Parsing Error');
   }
-  if (type === 'new') {
-    const chaTitle = document.querySelector('channel > title').textContent;
-    const chaDescription = document.querySelector('channel > description').textContent;
-    state.feeds.push({
-      id: curFeedId, title: chaTitle, description: chaDescription,
-    });
 
-    items.forEach((item) => {
-      const title = item.querySelector('title').textContent;
-      const description = item.querySelector('description').textContent;
-      const link = item.querySelector('link').textContent;
-      const postId = uniqueId();
-      state.posts.push({
-        feedId: curFeedId, id: postId, title, description, link,
-      });
-    });
-  }
-  if (type === 'existing') {
-    const existingPosts = state.posts.filter(({ feedId }) => feedId === curFeedId);
-    const existingPostsTitles = existingPosts.map(({ title }) => title);
-    const newPosts = Array.from(items).filter((item) => {
-      const title = item.querySelector('title').textContent;
-      return !existingPostsTitles.includes(title);
-    });
-    newPosts.forEach((post) => {
-      const title = post.querySelector('title').textContent;
-      const description = post.querySelector('description').textContent;
-      const link = post.querySelector('link').textContent;
-      const postId = uniqueId();
-      state.trackingPosts.push({
-        feedId: curFeedId, id: postId, title, description, link,
-      });
-      state.posts.push({
-        feedId: curFeedId, id: postId, title, description, link,
-      });
-    });
-  }
+  const channel = document.querySelector('channel');
+  const title = channel.querySelector('title').textContent;
+  const description = channel.querySelector('description').textContent;
+
+  const postItems = channel.querySelectorAll('item');
+  const posts = mapPosts(Array.from(postItems));
+
+  return { title, description, posts };
 };
 
 export default parser;
