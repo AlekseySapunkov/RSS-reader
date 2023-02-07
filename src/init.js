@@ -52,7 +52,7 @@ export default async () => {
     .init({
       lng: 'ru',
       debug: true,
-      resources: 
+      resources:
         languages,
     })
     .then(() => {
@@ -109,10 +109,8 @@ export default async () => {
             .then((response) => {
               const XML = response.data.contents;
               const updatedFeed = parser(XML);
-              const newPosts = updatedFeed.posts.filter(
-                (post) =>
-                  !watchedState.posts.map((el) => el.link).includes(post.link)
-              );
+              const newPosts = updatedFeed.posts
+                .filter((post) => !watchedState.posts.map((el) => el.link).includes(post.link));
               if (newPosts.length > 0) {
                 watchedState.posts.push(
                   ...newPosts.map((post) => ({ ...post, postId: uniqueId() }))
@@ -145,17 +143,10 @@ export default async () => {
           });
       });
 
-      elements.postsArea.addEventListener(
-        'click',
-        (e) => {
-          const postButton = e.target;
-          const targetPost = watchedState.posts.find(
-            ({ id }) => id === postButton
-          );
-
-          watchedState.UIState.shownPosts.push({ postButton: targetPost.id });
-        },
-        true
-      );
+      elements.postsArea.addEventListener('click', (e) => {
+        const postButton = e.target;
+        const targetPost = watchedState.posts.find(({ id }) => id === postButton);
+        watchedState.UIState.shownPosts.push({ postButton: targetPost.id });
+      }, true);
     });
 };
