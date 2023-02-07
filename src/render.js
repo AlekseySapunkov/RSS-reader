@@ -67,7 +67,7 @@ const renderPosts = (posts, list, direction, i18n, state) => {
 };
 
 export default (state, form, i18n) => (path, value, prevValue) => {
-  if (path === 'error') {
+  if (path === 'dataLoading.error' || path === 'formValidation.error') {
     form.elements.url.classList.add('is-invalid');
     const feedbackContainer = createFeedbackContainer();
     if (value.name === i18n.t('errorNames.validation')) {
