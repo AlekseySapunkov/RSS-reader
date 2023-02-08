@@ -65,8 +65,9 @@ export default async () => {
           state: 'waiting',
           error: null,
         },
+        viewedPost: new Set(),
         uiState: {
-          seenPosts: new Set(),
+          state: '',
         },
         feeds: [],
         posts: [],
@@ -78,7 +79,7 @@ export default async () => {
 
       const loadPosts = (userUrl) => {
         watchedState.dataLoading.state = 'processing';
-        const url = addProxy(userUrl);
+        const url = addProxy(userUrl); 
         axios
           .get(url)
           .then((response) => {
@@ -141,11 +142,10 @@ export default async () => {
             console.error(error);
           });
       });
-
-      elements.postsArea.addEventListener('click', (e) => {
-        const postButton = e.target;
-        const targetPost = watchedState.posts.find(({ id }) => id === postButton);
-        watchedState.UIState.shownPosts.push({ postButton: targetPost.id });
-      }, true);
+      elements.postsArea.addEventListener(
+        'click', (e) => {
+          const postButton = e.target.getAttribute('data-bs-postid');
+          watchedState.viewedPost.add(postButton);
+        }, true);
     });
 };
