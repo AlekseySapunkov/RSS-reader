@@ -8,7 +8,7 @@ const mapPosts = (posts) => posts
 
 const parser = (data) => {
   const rssParser = new DOMParser();
-  const document = rssParser.parseFromString(data, 'application/xml');
+  const document = rssParser.parseFromString(data, 'text/xml');
   const errorNode = document.querySelector('parsererror');
   if (errorNode) {
     throw new Error('Parsing Error');
