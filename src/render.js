@@ -25,7 +25,6 @@ const renderModal = (post, i18n) => {
 
   modalFooter.append(footerLink, footerButton);
 };
-
 const markLinkVisited = (postId) => {
   const button = document
     .querySelector('.posts')
@@ -34,7 +33,6 @@ const markLinkVisited = (postId) => {
   neighbourLink.classList.replace('fw-bold', 'fw-normal');
   neighbourLink.classList.add('link-secondary');
 };
-
 const renderPosts = (state, postsArea, posts, i18n) => {
   _.sortBy(posts, 'title').forEach((post) => {
     const { title, postId, link } = post;
@@ -71,11 +69,10 @@ const renderPosts = (state, postsArea, posts, i18n) => {
     postsListItem.append(postLink, postButton);
     postCard.append(postsListItem);
 
-    if (state.uiState.seenPosts.has(postId)) {
+    if (state.viewedPost.has(postId)) {
       postCard.querySelector('a').classList.replace('fw-bold', 'fw-normal');
       postCard.querySelector('a').classList.add('link-secondary');
     }
-
     postsArea.prepend(postCard);
   });
 };
@@ -243,7 +240,7 @@ const renderDataLoading = (state, elements, i18n) => {
 };
 
 const render = (state, path, i18n, elements) => {
-  const lastPostId = _.last(Array.from(state.uiState.seenPosts));
+  const lastPostId = _.last(Array.from(state.viewedPost));
   const lastPost = state.posts.find((post) => post.postId === lastPostId);
   switch (path) {
     case 'formValidation.state':
@@ -259,7 +256,7 @@ const render = (state, path, i18n, elements) => {
     case 'uiState.state':
       renderUpdatedFeed(elements, state, i18n);
       break;
-    case 'uiState.seenPosts':
+    case 'viewedPost':
       markLinkVisited(lastPostId);
       renderModal(lastPost, i18n);
       break;
