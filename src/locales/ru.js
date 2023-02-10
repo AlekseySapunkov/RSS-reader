@@ -26,5 +26,6 @@ export default {
     invalidRSS: 'Ресурс не содержит валидный RSS',
     existsError: 'RSS уже существует',
     networkError: 'Ошибка сети',
+    defaultError: 'Непредвиденная ошибка',
   },
 };
