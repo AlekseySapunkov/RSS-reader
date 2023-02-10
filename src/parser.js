@@ -6,7 +6,7 @@ const mapPosts = (posts) => posts
     return { title, link, description };
   });
 
-const parser = (data) => {
+const parse = (data) => {
   const rssParser = new DOMParser();
   const document = rssParser.parseFromString(data, 'text/xml');
   const errorNode = document.querySelector('parsererror');
@@ -24,4 +24,4 @@ const parser = (data) => {
   return { title, description, posts };
 };
 
-export default parser;
+export default parse;
