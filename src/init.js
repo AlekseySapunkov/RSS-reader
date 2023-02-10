@@ -75,13 +75,11 @@ export default async () => {
             }));
             watchedState.posts.push(...posts);
             watchedState.dataLoading.state = 'successful';
-            watchedState.dataLoading.state = 'waiting';
           })
           .catch((error) => {
             watchedState.dataLoading.error = handleErrors(error);
             watchedState.dataLoading.state = 'failed';
             console.error(error);
-            watchedState.dataLoading.state = 'waiting';
           });
       };
 
