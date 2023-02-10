@@ -6,16 +6,10 @@ import uniqueId from 'lodash/uniqueId';
 import languages from './locales/index.js';
 import render from './render.js';
 import parser from './parser.js';
+import addProxy from './proxy.js';
+import handleErrors from './handleErrors.js';
 
 export default async () => {
-  const addProxy = (url) => {
-    const proxy = 'https://allorigins.hexlet.app/get';
-    const urlWithProxy = new URL(proxy);
-    urlWithProxy.searchParams.set('url', url);
-    urlWithProxy.searchParams.set('disableCache', 'true');
-    return urlWithProxy.toString();
-  };
-
   const elements = {
     urlForm: document.querySelector('form'),
     feedsArea: document.querySelector('.feeds'),
@@ -34,17 +28,6 @@ export default async () => {
       url: string().url().required().notOneOf(previousURLs),
     });
     return schema.validate({ url });
-  };
-
-  const handleErrors = (error) => {
-    switch (error.message) {
-      case 'Network Error':
-        return 'networkError';
-      case 'Parsing Error':
-        return 'invalidRSS';
-      default:
-        return 'defaultError';
-    }
   };
 
   const i18n = i18next.createInstance();
