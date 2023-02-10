@@ -5,7 +5,7 @@ import { object, string } from 'yup';
 import uniqueId from 'lodash/uniqueId';
 import languages from './locales/index.js';
 import render from './render.js';
-import parser from './parser.js';
+import parse from './parser.js';
 import addProxy from './proxy.js';
 import handleErrors from './handleErrors.js';
 
@@ -67,7 +67,7 @@ export default async () => {
           .get(url)
           .then((response) => {
             const xml = response.data.contents;
-            const feed = parser(xml);
+            const feed = parse(xml);
             watchedState.feeds.push({ ...feed, url: userUrl });
             const posts = feed.posts.map((post) => ({
               ...post,
@@ -92,7 +92,7 @@ export default async () => {
             .get(url)
             .then((response) => {
               const xml = response.data.contents;
-              const updatedFeed = parser(xml);
+              const updatedFeed = parse(xml);
               const newPosts = updatedFeed.posts
                 .filter((post) => !watchedState.posts.map((el) => el.link).includes(post.link));
               if (newPosts.length > 0) {
