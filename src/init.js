@@ -66,8 +66,8 @@ export default async () => {
         axios
           .get(url)
           .then((response) => {
-            const XML = response.data.contents;
-            const feed = parser(XML);
+            const xml = response.data.contents;
+            const feed = parser(xml);
             watchedState.feeds.push({ ...feed, url: userUrl });
             const posts = feed.posts.map((post) => ({
               ...post,
@@ -91,8 +91,8 @@ export default async () => {
           return axios
             .get(url)
             .then((response) => {
-              const XML = response.data.contents;
-              const updatedFeed = parser(XML);
+              const xml = response.data.contents;
+              const updatedFeed = parser(xml);
               const newPosts = updatedFeed.posts
                 .filter((post) => !watchedState.posts.map((el) => el.link).includes(post.link));
               if (newPosts.length > 0) {
