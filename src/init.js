@@ -92,12 +92,10 @@ export default async () => {
               const xml = response.data.contents;
               const updatedFeed = parse(xml);
               const newPosts = updatedFeed.posts
-                .filter((post) => !watchedState.posts.map((el) => el.link).includes(post.link));
-              if (newPosts.length > 0) {
-                watchedState.posts
-                  .push(...newPosts.map((post) => ({ ...post, postId: uniqueId() })));
-                watchedState.uiState.state = 'updatingFeed';
-              }
+                .filter((post) => !watchedState.posts.map((el) => el.link).includes(post.link))
+                .map((post) => ({ ...post, postId: uniqueId() }));
+              watchedState.posts.unshift(...newPosts);
+              watchedState.uiState.state = 'updatingFeed';
             })
             .catch((error) => {
               console.error(error);
